@@ -1,5 +1,7 @@
 let arrayElements = [1, 75, 3, 45, 5, 6, 7, 93, 9, 10];
 
+defaultArray = document.getElementById("default");
+defaultArray.innerText = arrayElements;
 
 
 filter = (userInput, arrayElements) => {
@@ -19,12 +21,9 @@ listen.addEventListener("click", () => {
     result = document.getElementById("userop")
 
     userInput = document.getElementById("user").value;
-    
+
     funresult = filter(userInput, arrayElements);
 
 
     result.innerText = funresult;
 })
-
-
-

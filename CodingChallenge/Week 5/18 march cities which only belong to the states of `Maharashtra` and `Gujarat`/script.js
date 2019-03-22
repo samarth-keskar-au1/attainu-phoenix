@@ -28,3 +28,5 @@ var loadContent = function () {
     }
   };
 };
+
+loadContent();

@@ -1,4 +1,4 @@
-oddNum = function(i) {
+oddNum = function (i) {
   if (i % 2 != 0) {
     return i;
   } else {
@@ -6,11 +6,12 @@ oddNum = function(i) {
   }
 };
 
-resultFun = function(i) {
+resultFun = function (i) {
   return i * i;
 };
 
-loopFun = function() {
+let result = document.getElementById("result");
+loopFun = function () {
   for (let i = 0; i <= 100; i++) {
     if (oddNum(i) == i) {
       console.log(resultFun(i));

@@ -49,6 +49,8 @@ function top10Players() {
             continue;
         } else {
             console.log(players[i].name);
+            console.log(players[i].rank);
+
         }
     }
 }
