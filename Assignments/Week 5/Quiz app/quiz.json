@@ -1,46 +1,46 @@
 [{
         "question": "WWW stands for?",
-        "answer": "World Wide Web"
+        "answer": "world wide web"
     },
 
     {
         "question": "Which software is used to view web pages?",
-        "answer": "Web Browser"
+        "answer": "web wrowser"
     },
 
     {
         "question": "ISP stands for?",
-        "answer": "Internet Service Provider"
+        "answer": "internet service provider"
     },
 
     {
         "question": "CSS stands for?",
-        "answer": "Cascading Style Sheet"
+        "answer": "cascading style sheet"
     },
 
     {
         "question": "HTML stands for?",
-        "answer": "Hyper Text Markup Language"
+        "answer": "hyper text markup language"
     },
 
     {
         "question": "The company behind Windows operating system?",
-        "answer": "Microsoft"
+        "answer": "microsoft"
     },
 
     {
         "question": "Who created Javascript?",
-        "answer": "Brendan Eich"
+        "answer": "brendan eich"
     },
 
     {
         "question": "The company behind Chrome web browser?",
-        "answer": "Google"
+        "answer": "google"
     },
 
     {
         "question": "Name a popular version control system",
-        "answer": "Git"
+        "answer": "git"
     },
 
     {
