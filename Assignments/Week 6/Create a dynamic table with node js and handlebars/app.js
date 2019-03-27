@@ -7,7 +7,7 @@ const app = express();
 
 
 
-app.use("view engine", "hbs");
+app.set("view engine", "hbs");
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -46,4 +46,4 @@ app.post('/players', (req, res) => {
 
 
 
-app.listen(8000);
+app.listen(3000);
