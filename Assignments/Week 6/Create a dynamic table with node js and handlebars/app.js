@@ -16,14 +16,12 @@ app.use(bodyParser.urlencoded({
 
 
 let PLAYERS = [];
-let COUNTRY = [];
 
 
 app.get('/players', (req, res) => {
 
     let data = {
         player: PLAYERS,
-        country: COUNTRY,
         username: "Sam"
     }
     res.render("index.hbs", data);
@@ -31,11 +29,14 @@ app.get('/players', (req, res) => {
 
 
 app.post('/players', (req, res) => {
-    let playerNameAr = req.body.playerName;
-    let playerCountryAr = req.body.playerCountry;
+    let playersObj = {};
 
-    PLAYERS.push(playerNameAr);
-    COUNTRY.push(playerCountryAr);
+    playersObj.name = req.body.playerName;
+
+    playersObj.country = req.body.playerCountry;
+
+    PLAYERS.push(playersObj);
+
 
     res.redirect("/players");
 
