@@ -1,36 +1,83 @@
 "use strict";
-let usrInput = document.getElementById("inputText").value;
 
-var updateContent = function (data) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].language != usrInput) {
-            continue;
-        } else {
-            let usrOutput = document.getElementById("books");
-            usrOutput.innerText = data[i].title;
-        }
+var BOOKS = [];
+
+var searchBook = function(language) {
+  var resultArray = [];
+  for (var i = 0; i < BOOKS.length; i++) {
+    if (BOOKS[i].language == language) {
+      resultArray.push(i);
     }
+  }
+  return resultArray;
 };
 
-searchBtn = document.getElementById("submit");
+var loadData = function() {
+  var request = new XMLHttpRequest();
+  request.open("get", "books.json");
+  request.send();
 
-searchBtn.addEventListener("click", loadContent);
-
-var loadContent = function () {
-    // Create an ajax object
-    var request = new XMLHttpRequest();
-
-    // Open a connect to a URL
-    request.open("get", "books.json");
-
-    // Send the request to the server resource.
-    request.send();
-
-    // Receive the data and do some thing with it.
-    request.onreadystatechange = function (data) {
-        if (request.readyState == 4 && request.status == 200) {
-            var jsonData = JSON.parse(request.responseText);
-            updateContent(jsonData);
-        }
-    };
+  request.onreadystatechange = function() {
+    if (request.readyState == 4 && request.status == 200) {
+      BOOKS = JSON.parse(request.responseText);
+    }
+  };
 };
+
+var createTableRow = function(position) {
+  var book = BOOKS[position];
+
+  var tbody = document.getElementById("tbody");
+
+  var tr = document.createElement("tr");
+  tbody.appendChild(tr);
+
+  var title = document.createElement("td");
+  title.innerText = book.title;
+  tr.append(title);
+
+  var author = document.createElement("td");
+  author.innerText = book.author;
+  tr.append(author);
+
+  var country = document.createElement("td");
+  country.innerText = book.country;
+  tr.append(country);
+
+  var link = document.createElement("td");
+  link.innerText = book.link;
+  tr.append(link);
+
+  var pages = document.createElement("td");
+  pages.innerText = book.pages;
+  tr.append(pages);
+
+  var title = document.createElement("td");
+  title.innerText = book.title;
+  tr.append(title);
+
+  var year = document.createElement("td");
+  year.innerText = book.year;
+  tr.append(year);
+};
+
+var button = document.getElementById("button");
+button.addEventListener("click", function() {
+  var language = document.getElementById("language").value;
+  if (language == "") {
+    alert("Hello, please enter a language first");
+    return;
+  }
+
+  var bookResults = searchBook(language);
+
+  var tbody = document.getElementById("tbody");
+  tbody.innerHTML = "";
+
+  for (var i = 0; i < bookResults.length; i++) {
+    createTableRow(bookResults[i]);
+  }
+});
+
+// Start things by loading the AJAX data.
+loadData();

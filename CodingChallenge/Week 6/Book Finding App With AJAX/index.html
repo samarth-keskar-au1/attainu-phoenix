@@ -2,37 +2,55 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Book Finder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books and Language</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-  <div class="container">
-    <br />
-    <div class="row justify-content-center ">
-      <div class="col-6 text-center ">
-        <h3 class="title display-4">Book Finder</h3>
 
-        <h4 id="question" class="question"></h4>
-        <!-- input box -->
-        <input type="text" class="form-control" placeholder="Enter The Preferred Language" id="inputText" />
-        <br />
-        <!-- button -->
-        <button type="button" class="btn btn-outline-success" id="submit">
-          Search
-        </button>
-        <hr />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <h2>Book Library</h2>
+                <hr>
 
-        <p id="books" class="display-4"></p>
-      </div>
+                <div class="form-group">
+                    <label for="">Enter The Desired Language Of The Book</label>
+                    <input type="text" class="form-control" id="language" placeholder="Language">
+                </div>
+
+                <button type="button" class="btn btn-outline-success" id="button">Search</button>
+
+                <p>
+                    <br>
+                </p>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Country of origin</th>
+                            <th>link</th>
+                            <th>Pages</th>
+                            <th>Title</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody"></tbody>
+
+                </table>
+
+            </div>
+        </div>
     </div>
-  </div>
-  <script src="app.js"></script>
+
+    <script src="app.js"></script>
 </body>
 
 </html>
