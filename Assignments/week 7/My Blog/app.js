@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 
 const mongo = require("mongodb");
 
+const Joi = require("joi");
+
 const app = express();
 
 app.set("view engine", "hbs");
@@ -24,14 +26,14 @@ let DB;
 // Create a Mongo client
 let mongoClient = new mongo.MongoClient("mongodb://localhost:27017/blog", { useNewUrlParser: true });
 mongoClient.connect(function(error) {
-    (error) ? console.log("Error connecting to the database."): DB = mongoClient.db("blog");
+    (error) ? console.log(error): DB = mongoClient.db("blog");
 });
 
 app.get("/", (req, res) => {
     DB.collection("posts").find({}).toArray(function(error, posts) {
 
         if (error) {
-            console.log("error occured while connecting to collection");
+            console.log(error);
         } else {
             let blogPosts = {
                 posts: posts
@@ -68,7 +70,7 @@ app.post("/add", (req, res) => {
 
     DB.collection("posts").insertOne(newPost, function(error, result) {
         if (error) {
-            console.log("error occured while inserting data into the instructors collection");
+            console.log(error);
         }
         res.redirect("/?success=true");
     });
@@ -77,12 +79,12 @@ app.post("/add", (req, res) => {
 
 app.get('/edit/:mongoId', (req, res) => {
 
-    let mongoId = req.params.mongoId;
+     let findThis = { _id: mongo.ObjectId(req.params.mongoId) };
 
-    DB.collection("posts").findOne({ _id: mongo.ObjectId(mongoId) }, function(error, posts) {
+    DB.collection("posts").findOne(findThis, function(error, posts) {
 
         if (error) {
-            return console.log("error occured while connecting to collection");
+            return console.log(error);
         }
 
         if (req.query.postUpdated) {
@@ -98,19 +100,18 @@ app.get('/edit/:mongoId', (req, res) => {
 
 app.post('/edit/:mongoId', (req, res) => {
 
-    let mongoId = req.params.mongoId;
-    let whichData = { _id: mongo.ObjectId(mongoId) };
+    let whichData = { _id: mongo.ObjectId(req.params.mongoId) };
     let incomingContent = { $set: { title: req.body.title, content: req.body.content } };
 
 
     DB.collection("posts").updateOne(whichData, incomingContent, function(error, posts) {
 
         if (error) {
-            return console.log("error occured while connecting to instructors collection");
+            return console.log(error);
         }
 
 
-        res.redirect(`/edit/${mongoId}?postUpdated=true`)
+        res.redirect(`/edit/${req.params.mongoId}?postUpdated=true`)
 
     });
 
@@ -135,7 +136,7 @@ app.post('/login', (req, res) => {
     DB.collection("users").findOne(userInput, function(error, users) {
 
         if (error) {
-            return console.log("error connecting to the collection ");
+            return console.log(error);
         }
 
         (!users) ? res.redirect(`/login?failed=true`): res.redirect(`/login?success=true`);
@@ -150,18 +151,51 @@ app.get('/signup', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
+    
+    const schema = {
+        name: Joi.string().min(3).required(),
+        email:Joi.string().email({ minDomainAtoms: 2 }).required(),
+        password:Joi.string().min(3).required()
+    };
+
+   const result = Joi.validate(req.body,schema);
+
+   if(result.error) {
+      return res.send(result.error.details[0].message);
+   }
+
+    
     let newUser = {
         name: req.body.name,
         email: req.body.email,
-        password: req.body.pas
+        password: req.body.password
     }
 
-    DB.collection("users").insertOne(newUser, function(error, result) {
+
+    let dupilicateUser = { email: req.body.email};
+    
+    DB.collection("users").findOne(dupilicateUser, function(error,result) {
+    
         if (error) {
-            console.log("error occured while inserting data into the users database");
+          return console.log(error);
+        }
+    
+       if(result) {
+          return res.send("The entered email is already registered");
+       }
+
+       DB.collection("users").insertOne(newUser, function(error, result) {
+        if (error) {
+            console.log(error);
         }
         res.send("signup successful");
     });
+        
+    
+    });
+
+
+   
 });
 
 
