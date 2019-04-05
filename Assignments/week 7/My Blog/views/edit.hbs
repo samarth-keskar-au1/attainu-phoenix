@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sam's Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Sam's Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Add Post</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid" id="content">
+        <div class="row">
+            <div class="offset-md-3 col-md-6">
+                <div class="row">
+                    {{#if postUpdated}}
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> Post Updated Successfully.
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="row">
+                    <h5 class="display-4">Editing - {{title}}</h5>
+                </div>
+                <div class="row">
+                    <div class="offset-md-9 col-md-3">
+                        <button type="button" class="btn btn-danger" id="btn">Delete Post</button>
+                        <input type="hidden" id="mongoId" value="{{_id}}">
+                    </div>
+
+
+
+                </div>
+                <form action="/edit/{{_id}}" method="POST">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" class="form-control" id="title" placeholder="Title Of The Post"
+                            value="{{title}}">
+                    </div>
+                    <p></p>
+                    <div class="form-group">
+                        <label for="content">Content:</label>
+                        <textarea class="form-control" name="content" rows="10"
+                            placeholder="Content Goes Here">{{content}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Update Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/scr.js"></script>
+</body>
+
+</html>
