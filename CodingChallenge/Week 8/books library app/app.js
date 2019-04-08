@@ -10,7 +10,9 @@ const app = express();
 
 app.set("view engine", "hbs");
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 app.use(bodyParser.json());
 
@@ -19,7 +21,9 @@ app.use(express.static("public"));
 let DB;
 
 // Create a Mongo client
-let mongoClient = new mongo.MongoClient("mongodb://localhost:27017/library", { useNewUrlParser: true });
+let mongoClient = new mongo.MongoClient("mongodb://localhost:27017/library", {
+    useNewUrlParser: true
+});
 mongoClient.connect(function(error) {
     (error) ? console.log("Error connecting to the database."): DB = mongoClient.db("library");
 });
@@ -43,7 +47,7 @@ app.post('/', (req, res) => {
                 books: books
             };
 
-            console.log(searchBooks.books);
+
             res.render("search.hbs", searchBooks);
         }
 
