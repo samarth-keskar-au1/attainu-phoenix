@@ -2,6 +2,6 @@
 
 [My Resume](resume/resume.pdf)
 
-[Assignments](assignments/)
+[Assignments](Assignments/)
 
-[Coding Challenges](coding-challenges/)
+[Coding Challenges](CodingChallange/)
