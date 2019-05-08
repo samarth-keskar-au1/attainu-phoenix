@@ -1,6 +1,6 @@
 # Ansal Mon
 
-[My Resume](/resume.pdf)
+[My Resume](resume/resume.pdf)
 
 [Assignments](Assignments/)
 
