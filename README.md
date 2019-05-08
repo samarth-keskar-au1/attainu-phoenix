@@ -4,4 +4,4 @@
 
 [Assignments](Assignments/)
 
-[Coding Challenges](CodingChallange/)
+[Coding Challenges](CodingChallenge/)
