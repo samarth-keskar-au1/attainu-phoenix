@@ -16,17 +16,21 @@ document.getElementById("obutton").addEventListener("click",function () {
 });
 
 
-
-let closureFunction = (function () {
-    let closureCounter = 0;
-    return function () {
-        closureCounter = closureCounter + 1;
-        globalCounter = globalCounter + 1;
-        document.getElementById("ccounter").innerText = closureCounter;
-        document.getElementById("gcounter").innerText = globalCounter;
+function closureFunction() {
+    let counter = 0;
+    function Counter() {
+        counter = counter + 1
+        return counter;
     }
-  })();
+    return Counter;
+}
 
-  document.getElementById("cbutton").addEventListener("click",closureFunction);
+let closureCounter = closureFunction();
+
+  document.getElementById("cbutton").addEventListener("click",function () {
+        globalCounter = globalCounter + 1;
+        document.getElementById("gcounter").innerText = globalCounter;
+        document.getElementById("ccounter").innerText = closureCounter();
+  });
 
 
