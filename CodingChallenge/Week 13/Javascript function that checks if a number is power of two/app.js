@@ -1,11 +1,12 @@
 function isPowerOfTwo(number) {
-    let mod;
+    if (number < 1) {return console.log("The given number is not a power of two");}
     while (number > 1) {
-        mod = number % 2
+        if(number % 2 != 0) {return console.log("The given number is not a power of two");}
         number = number / 2;
     }
 
-    mod == 0 ? console.log("The given number is a power of two") : console.log("The given number is not a power of two");
+    console.log("The given number is a power of two") ;
+
 }
 
 isPowerOfTwo(899);
