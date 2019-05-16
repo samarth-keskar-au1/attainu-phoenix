@@ -7,7 +7,7 @@ class Content extends React.Component {
   state = {
     phones:[{
       title:"iphone X",
-      imgUrl:"src/iphone.jpg",
+      imgUrl:"/iphone.jpg",
       display:"Display: 5.80-inch",
       processor:"Processor: 2.39GHz hexa-core",
       front:"Front Camera:7-megapixel",
@@ -20,7 +20,7 @@ class Content extends React.Component {
     },
     {
       title:"OnePlus 6",
-      imgUrl:"src/op.jpg",
+      imgUrl:"/op.jpg",
       display:"Display: 6.28-inch",
       processor:"Processor: 2.8GHz octa-core",
       front:"Front Camera: 16-megapixel",
@@ -33,7 +33,7 @@ class Content extends React.Component {
     },
     {
       title:"Pixel 2 XL",
-      imgUrl:"src/pixel.jpg",
+      imgUrl:"/pixel.jpg",
       display:"Display: 6.00-inch",
       processor:"Processor: 1.9GHz octa-core",
       front:"Front Camera: 8-megapixel",
@@ -43,14 +43,28 @@ class Content extends React.Component {
       storage:"Storage: 64GB",
       rear:"Rear Camera: 12.2-megapixel",
       battery:"Battery Capacity: 3520mAh"
-    }]
+    },
+    {
+    title:"Samsung Galaxy S10",
+    imgUrl:"/s10.jpg",
+    display:"Display: 6.10-inch",
+    processor:"Processor: 1.9GHz octa-core",
+    front:"Front Camera: 10-megapixel",
+    resolution:"Resolution: 1440 x 3040",
+    ram:"RAM: 8GB",
+    os:"OS: Android 9.0",
+    storage:"Storage: 128GB",
+    rear:"Rear Camera: 12-megapixel + 12-megapixel + 16-megapixel",
+    battery:"Battery Capacity: 3400mAh"
+  }]
   };
 
   render() {
     return(
-        this.state.phones.map((phone) => {
+      
+       this.state.phones.map(phone => (
           <div className="col-md-3">
-            <img src={phone.imgUrl}  className="img-fluid"></img>
+            <img src={phone.imgUrl}  className="img-fluid"/>
             <br/>
             <br/>
             <h5 className="text-center">{phone.title}</h5>
@@ -68,7 +82,7 @@ class Content extends React.Component {
                     <li>{phone.battery}</li>
                 </ul>
           </div>
-        } )
+       ))
     );
   }
 }
