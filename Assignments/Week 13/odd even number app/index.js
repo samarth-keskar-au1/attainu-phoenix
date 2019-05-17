@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 class EventHandle extends React.Component {
-  state = {
-    result: null
-  };
+
+  state = {result: null};
+
   render() {
     return (
         <main className = "container m-5">
@@ -16,7 +16,7 @@ class EventHandle extends React.Component {
           <button onClick = {this.handleClick} className = "btn btn-success">Check</button>
           </p>
 
-            <h3>{this.handleOutput()}</h3>
+          <h3>{this.state.result}</h3>
 
         </main>
     );
@@ -28,11 +28,7 @@ class EventHandle extends React.Component {
   }
 
   handleClick = () => {
-     return this.state.input % 2 === 0 ? this.setState({result:true}) : this.setState({result:false});
-  }
-
-  handleOutput ()  {
-    return this.state.result === null ? "" : this.state.result === true ? "This is a even number" : "This is a odd number";
+     return this.state.input % 2 === 0 ? this.setState({result:"This is a even number"}) : this.setState({result:"This is a odd number"});
   }
 
 }
