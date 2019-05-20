@@ -6,7 +6,7 @@ let primeNum = num => {
   
   let getPrimeNumbers = num => {
     let primeArray = [];
-    for(var i=2;primeArray.length < num;i++){ if(primeNum(i)) primeArray.push(i);}
+    for(let i=2;primeArray.length < num;i++){ if(primeNum(i)) primeArray.push(i);}
     console.log(primeArray);
   }
 
