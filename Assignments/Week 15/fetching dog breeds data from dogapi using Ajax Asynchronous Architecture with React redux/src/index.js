@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {store} from './store.js';
-import {Menu} from './Menu.js';
-import {SubBreed} from './SubBreed.js';
-import {Images} from './Images.js';
+import {store} from './store/store.js';
+import {Menu} from './components/Menu.js';
+import {SubBreed} from './components/SubBreed.js';
+import {Images} from './components/Images.js';
 
 
 class App extends React.Component {

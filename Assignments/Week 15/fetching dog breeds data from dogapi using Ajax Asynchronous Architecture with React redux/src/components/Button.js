@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {storeMapper} from './store.js';
+import {storeMapper} from '../store/store.js';
 
 class ButtonComponent extends React.Component {
 

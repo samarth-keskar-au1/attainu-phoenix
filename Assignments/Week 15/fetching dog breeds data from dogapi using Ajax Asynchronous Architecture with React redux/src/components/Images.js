@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { storeMapper } from "./store.js";
+import { storeMapper } from "../store/store.js";
 
 class ImagesComponent extends React.Component {
   render() {
@@ -8,7 +8,7 @@ class ImagesComponent extends React.Component {
       return <p>Loading Images</p>;
     } else {
       return this.props.images.map(function(b) {
-        return <img src={b} class="img-thumbnail" alt="" />;
+        return <img key = {b} src={b} className="img-thumbnail" alt="" />;
       });
     }
   }

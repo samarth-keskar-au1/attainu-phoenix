@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button} from './Button.js'
-import {storeMapper} from './store.js';
+import {storeMapper} from '../store/store.js';
 
 
 class MenuComponent extends React.Component {
