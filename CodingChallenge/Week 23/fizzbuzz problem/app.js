@@ -1,17 +1,17 @@
 const fizzBuzz = n => {
   for (let i = 1; i <= n; i++) {
     if (i % 5 == 0 && i % 3 == 0) {
-      console.log(i, "<= fizzbuzz");
+      console.log("FizzBuzz");
       continue;
     }
 
     if (i % 5 == 0) {
-      console.log(i, "<= buzz");
+      console.log("Buzz");
       continue;
     }
 
     if (i % 3 == 0) {
-      console.log(i, "<= fizz");
+      console.log("Fizz");
       continue;
     }
 
