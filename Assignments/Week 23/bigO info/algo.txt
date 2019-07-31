@@ -1,0 +1,16 @@
+O(n log n) => For Merge Sort , Heap Sort, Quick Sort.
+
+O(2^N) => Algorithms with running time O(2^N) are often recursive algorithms.
+
+Just say I'm in front of a class of students and one of them has my pen. Here are some ways to find the pen and what the O order is.
+
+O(n2 ): I question a student and ask them, "Does Jeff have the pen? No? Does Bob have the pen?" And so on, naming each student. If I don't get the answer from the first student, I move on to the next one. In the worst case I need to ask n^2 questions - questioning each student about each other student.
+For Bubble Sort , Insertion Sort , Selection Sort.
+
+O(n): I ask each student if they have the pen. If not, I move on to the next one. In the worst case I need to ask n questions.
+For Finding the smallest or largest item in an unsorted array.
+
+O(log n): I divide the class in two, then ask: "Is it on the left side, or the right side of the classroom?" Then I take that group and divide it into two and ask again, and so on. In the worst case I need to ask log n questions.
+For Binary Search
+
+
