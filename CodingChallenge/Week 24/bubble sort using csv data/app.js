@@ -1,43 +1,36 @@
+"use strict";
 const fs = require("fs");
-let newArray = [];
 
-let parse = fileName => {
-  fs.readFile(fileName, "utf-8", (err, data) => {
-    if (err) {
-      return console.log("error reading file");
+let readFile = (fileName, callback) => {
+  fs.readFile(fileName, "utf-8", callback);
+};
+
+let sortData = (err, data) => {
+  if (err) {
+    return console.log("error reading file");
+  }
+
+  let csv = data.trim().split("\n");
+
+  for (let i = 0; i < csv.length; i++) {
+    for (let j = 0; j < csv.length - i; j++) {
+      let num1 = parseFloat(csv[j].split(",")[1]);
+      let num2 = csv[j + 1] ? parseFloat(csv[j + 1].split(",")[1]) : "";
+
+      if (num1 < num2) {
+        [csv[j], csv[j + 1]] = [csv[j + 1], csv[j]];
+      }
     }
-    data = data.split("\n");
+  }
+  printData(csv);
+};
 
-    data.forEach(element => {
-      let newdata = element.split(",");
-      newArray.push(Array.from(newdata));
-    });
-
-    console.log(bubbleSort(newArray));
-  });
-
-  let bubbleSort = newArray => {
-    for (let i = 1; i < newArray.length ; i++) {
-         for (let j = 0; j < newArray.length - i; j++) {
-           let num1 = newArray[j][1];
-           let num2 = newArray[j + 1][1];
-           if (num1 < num2) {
-             [newArray[j], newArray[j + 1]] = [newArray[j + 1], newArray[j]];
-           }
-         }
-       }
-       return newArray;
-    }
+let printData = data => {
+  console.log(data);
 };
 
 function main() {
-  if (process.argv.length !== 3) {
-    console.log("please enter all necessary things.");
-  }
-
-  let fileName = process.argv[2];
-
-  parse(fileName);
+  readFile("file.csv", sortData);
 }
 
 main();
