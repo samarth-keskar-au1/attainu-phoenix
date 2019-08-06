@@ -2,8 +2,6 @@
 
 [My Resume](resume/resume.pdf)
 
-[Cover Letter](resume/cover.pdf)
-
 [Assignments](Assignments/)
 
 [Coding Challenges](CodingChallenge/)
