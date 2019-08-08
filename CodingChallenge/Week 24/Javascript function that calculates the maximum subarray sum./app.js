@@ -6,8 +6,9 @@ const getMaxSubSum = arr => {
 
   for (let num of arr) { 
     tempSum += num;
-    maxSum = Math.max(maxSum, tempSum);
-    if (tempSum < 0) tempSum = 0;
+    maxSum = tempSum > maxSum ?  tempSum : maxSum;
+    tempSum = tempSum > 0 ? tempSum : 0;
+    
   }
 
   return maxSum;
