@@ -16,9 +16,10 @@ class LinkedList {
 	}
 
 
-	append(value) {
-
+	append(value,data) {
 		let newNode = new Node(value);
+
+		
 
 		if(!this.tail) {
 			this.head = newNode;
@@ -30,9 +31,9 @@ class LinkedList {
 
 	}
 
-	prepend(value){
+	prepend(value,data){
 		let newNode = new Node(value);
-
+		 
 		if(!this.head) {
 			this.head = newNode;
 			this.tail = newNode;
@@ -45,12 +46,13 @@ class LinkedList {
 
 
 	search(value){
-		while(this.head) {
-			if (this.head.value === value) {
-				return this.head;
+		let currentNode = this.head;
+		while(currentNode) {
+			if (currentNode.value === value) {
+				return currentNode;
 			}
 
-			this.head = this.head.next;
+			currentNode = currentNode.next;
 		}
 
 		return null;
@@ -81,7 +83,7 @@ class LinkedList {
 		let currentNode = this.head;
 		let values = [];
 		while(currentNode){
-			values.push(currentNode.value);
+			values.push(currentNode.toString());
 			currentNode = currentNode.next;
 		}
 
@@ -89,22 +91,4 @@ class LinkedList {
 	}
 }
 
-let l = new LinkedList();
 
-l.append("sam");
-l.append("ansal");
-
-l.print();
-
-l.prepend("vaibhav");
-l.prepend("divyam");
-
-l.print();
-
-l.delete("vaibhav");
-
-l.print();
-
-
-
-// console.log(l.search("divyam"));
