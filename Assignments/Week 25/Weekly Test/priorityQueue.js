@@ -17,7 +17,7 @@ class Heap {
 
     find(item) {
         for (let i = 0; i < this.array.length; i++) {
-            if(this.array[i] === item) {return item}
+            if(this.array[i] === item) {return i}
         }
 
         return -1;
@@ -137,7 +137,7 @@ class Heap {
 class PriorityQueue extends Heap {
     constructor() {
         let compare = function(a,b) {
-            return this.priorities[a] < this.priorities[b];
+            return this.priorities[a] > this.priorities[b];
         }
         super(compare);
 
@@ -163,32 +163,17 @@ class PriorityQueue extends Heap {
 
 let pq = new PriorityQueue();
 
-pq.add("Nadal",4);
-pq.add("Djokovic",3);
-pq.add("Federer",1);
-pq.add("Agassi",7);
-pq.add("Murray",5);
-pq.add("Sampras",9);
-pq.add("Williams",8);
 
-pq.print();
-
-pq.remove("Agassi");
-
-pq.print();
-
-
-pq.print();
-
-// fs.readFile("file.csv", "utf-8", (err,data) => {
-//     let pq = new PriorityQueue();
-//   	if(err) {return console.log("error reading file");}
-//     let array = data.trim().split("\n");
-//     let newArray = [];
-//     array.forEach(e => newArray.push(e.split(",")));
-//     newArray.forEach(e => pq.add(e[0],e[1]));
-   
-//   }); 
+fs.readFile("file.csv", "utf-8", (err,data) => {
+    let pq = new PriorityQueue();
+  	if(err) {return console.log("error reading file");}
+    let array = data.trim().split("\n");
+    let newArray = [];
+    array.forEach(e => newArray.push(e.split(",")));
+    newArray.forEach(e => pq.add(e[0],e[1]));
+    pq.print();
+    
+  }); 
 
  
 
