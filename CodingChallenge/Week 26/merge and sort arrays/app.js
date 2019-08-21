@@ -1,5 +1,44 @@
 "use strict";
+// Using Merge Sort 
 
+const merge = (a,b) => {
+
+  let merged = [];
+
+  while(a.length && b.length) {
+    let smallest;
+
+    if(a[0] < b[0]) {
+      smallest = a.shift()
+    } else {
+      smallest = b.shift();
+    }
+
+    merged.push(smallest);
+  }
+
+  if(a.length) {
+    merged = merged.concat(a);
+  }
+
+  if(b.length) {
+    merged = merged.concat(b);
+  }
+
+  return merged
+}
+
+const mainMerge = (a,b) => {
+  let sortedArray = merge(a,b);
+    return sortedArray;
+};
+
+let a = [1,2,3,4,5,6,89,113];
+let b = [7,8,9,10,11,12,13,25];
+
+console.log(mainMerge(a,b))
+
+// Using Quick Sort
 const quickSort = arr => {
   if (arr.length <= 1) {
     return arr;
@@ -25,11 +64,11 @@ const quickSort = arr => {
   return quickSort(left).concat(center, quickSort(right));
 };
 
-const main = arr => {
+const mainQuick = arr => {
   let sortedArray = quickSort(arr);
     return sortedArray;
 };
 
-let a = [5, 2, 8, 9, 4, 6];
-let b = [1,7,96,87,63,78,8];
-console.log(main([...b,...a]));
+let c = [1,2,3,4,5,6,89,113];
+let d = [7,8,9,10,11,12,13,25];
+console.log(mainQuick([...c,...d]));
