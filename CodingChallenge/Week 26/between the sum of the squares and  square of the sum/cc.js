@@ -24,4 +24,4 @@ const main = n => {
 }
 
 
-console.log(main(10));
+console.log(main(100));
