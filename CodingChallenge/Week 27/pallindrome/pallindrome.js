@@ -1,12 +1,7 @@
 "use strict";
 
-let isPallindrome = s => {
-  return s == s.split("").reverse().join("");
-};
+let isPallindrome = s => s == s.split("").reverse().join("");
 
-let main = () => {
-  let input = process.argv[2];
- return  isPallindrome(input);
-}
+let main = () => process.argv.length <= 2 ? "Enter The Strings" : isPallindrome(process.argv[2]);
 
 console.log(main());
