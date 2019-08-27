@@ -8,29 +8,27 @@ class RemoveAll extends LinkedList {
   }
 
   removeAll(value) {
-		if (this.head.value === value) {
-       this.head = this.head.next;
-       this.removeAll(value);
-		} else {
-			let previousNode = this.head;
-			let currentNode = previousNode.next;
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      this.removeAll(value);
+    } else {
+      let previousNode = this.head;
+      let currentNode = previousNode.next;
 
-			while(currentNode) {
-				if (currentNode.value === value) {
-					previousNode.next = currentNode.next;
+      while (currentNode) {
+        if (currentNode.value === value) {
+          previousNode.next = currentNode.next;
           currentNode = currentNode.next;
-				} else {
-					previousNode = currentNode;
-					currentNode = currentNode.next;
-				}
-			}
-		}	
-	}
+        } else {
+          previousNode = currentNode;
+          currentNode = currentNode.next;
+        }
+      }
+    }
+  }
 }
 
-
 let rm = new RemoveAll();
-
 
 rm.append(10);
 rm.append(20);
