@@ -2,7 +2,7 @@
 
 const findMissing = arr => {
   let array = [];
-  for (let i = 1; i < arr.length; i++) {
+  for (let i = 1; i <  arr[arr.length - 1]; i++) {
     if (!arr.includes(i)) {
       array.push(i);
     }
