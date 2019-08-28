@@ -2,6 +2,10 @@
 
 const findMissing = arr => {
   let array = [];
+  if(arr.length < 1) {
+    console.log("length of the array should be greater than 1");
+    return null;
+  }
   for (let i = 1; i <  arr[arr.length - 1]; i++) {
     if (!arr.includes(i)) {
       array.push(i);
