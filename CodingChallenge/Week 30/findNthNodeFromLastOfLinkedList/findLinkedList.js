@@ -70,9 +70,7 @@ class LinkedList {
       fast = fast.next;
     }
 
-    slow.next = slow.next.next;
-
-    return head;
+    return slow.next;
   }
 
   delete(value) {
@@ -122,6 +120,4 @@ n.append(11);
 
 n.print();
 
-n.removeNthFromEnd(2);
-
-n.print();
+console.log(n.removeNthFromEnd(2));
